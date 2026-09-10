@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>NEBULA — Journey Through the Unknown</title>
+<meta name="description" content="An immersive multi-layer parallax scrolling experience through deep space, from the first unknown signal to the horizon of the future.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- =========================================================
+     LOADING SEQUENCE
+========================================================= -->
+<div id="loader" aria-hidden="true">
+  <div class="loader-inner">
+    <span class="loader-mark">NEBULA</span>
+    <span class="loader-status">INITIALIZING JOURNEY<span class="loader-dots"></span></span>
+    <div class="loader-bar"><div class="loader-bar-fill" id="loaderFill"></div></div>
+    <span class="loader-percent" id="loaderPercent">0%</span>
+  </div>
+</div>
+
+<!-- =========================================================
+     CUSTOM CURSOR (desktop only, disabled via JS on touch)
+========================================================= -->
+<div class="cursor-dot" id="cursorDot" aria-hidden="true"></div>
+<div class="cursor-ring" id="cursorRing" aria-hidden="true"></div>
+
+<!-- =========================================================
+     GLOBAL STARFIELD — persists across the entire journey
+========================================================= -->
+<div class="starfield" aria-hidden="true">
+  <div class="star-layer star-far"   data-speed="0.02"></div>
+  <div class="star-layer star-mid"   data-speed="0.05"></div>
+  <div class="star-layer star-near"  data-speed="0.09"></div>
+  <div class="grain-overlay"></div>
+</div>
+
+<!-- =========================================================
+     NAVIGATION
+========================================================= -->
+<nav id="siteNav" class="site-nav" aria-label="Primary">
+  <a href="#hero" class="nav-logo" data-cursor="hover">NEBULA</a>
+
+  <ul class="nav-links">
+    <li><a href="#journey" data-target="journey" data-cursor="hover">Journey</a></li>
+    <li><a href="#worlds" data-target="worlds" data-cursor="hover">Worlds</a></li>
+    <li><a href="#deepspace" data-target="deepspace" data-cursor="hover">Deep Space</a></li>
+    <li><a href="#future" data-target="future" data-cursor="hover">Future</a></li>
+  </ul>
+
+  <div class="nav-progress" aria-hidden="true">
+    <span class="progress-current" id="progressCurrent">01</span>
+    <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+    <span class="progress-total">07</span>
+  </div>
+</nav>
+
+<!-- Skip target for reduced-motion / keyboard users -->
+<a class="skip-link" href="#journey">Skip intro</a>
+
+<main id="mainContent">
+
+  <!-- =====================================================
+       SECTION 00 — HERO — ENTER THE UNKNOWN
+  ====================================================== -->
+  <section id="hero" class="section hero-section" data-index="1" aria-label="Enter the unknown">
+
+    <div class="depth-field" aria-hidden="true">
+      <div class="parallax" data-speed="0.12">
+        <div class="hero-nebula"></div>
+      </div>
+
+      <div class="parallax" data-speed="0.22">
+        <div class="hero-planet">
+          <div class="hero-planet-glow"></div>
+          <div class="hero-planet-terminator"></div>
+        </div>
+      </div>
+
+      <div class="parallax" data-speed="0.34" data-mouse="0.6">
+        <div class="orbital-wrap">
+          <div class="orbital-ring orbital-ring--a"></div>
+        </div>
+      </div>
+
+      <div class="parallax" data-speed="0.46" data-mouse="1.1">
+        <svg class="satellite" viewBox="0 0 120 60" aria-hidden="true">
+          <g stroke="currentColor" stroke-width="1.4" fill="none">
+            <rect x="48" y="24" width="24" height="12" rx="2" fill="rgba(200,210,255,0.14)"/>
+            <line x1="20" y1="30" x2="48" y2="30"/>
+            <line x1="72" y1="30" x2="100" y2="30"/>
+            <rect x="4" y="16" width="16" height="28" fill="rgba(125,211,252,0.16)"/>
+            <rect x="100" y="16" width="16" height="28" fill="rgba(125,211,252,0.16)"/>
+            <circle cx="60" cy="30" r="3" fill="rgba(200,210,255,0.5)"/>
+          </g>
+        </svg>
+      </div>
+
+      <div class="parallax" data-speed="0.6" data-mouse="1.6">
+        <div class="particles-layer" data-particle-count="26" id="heroParticles"></div>
+      </div>
+    </div>
+
+    <div class="hero-content parallax" data-speed="0.06">
+      <p class="eyebrow reveal" data-reveal="fade-up">System // Exploration Mode</p>
+      <h1 class="hero-title reveal" data-reveal="fade-up">NEBULA</h1>
+      <p class="hero-subtitle reveal" data-reveal="fade-up">Journey Through the Unknown</p>
+
+      <div class="hero-actions reveal" data-reveal="fade-up">
+        <a href="#journey" class="btn-primary" data-cursor="hover">
+          <span>Begin Journey</span>
+        </a>
+        <div class="scroll-hint">
+          <span>Scroll to explore</span>
+          <span class="scroll-hint-line" aria-hidden="true"></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================================================
+       SECTION 01 — THE JOURNEY
+  ====================================================== -->
+  <section id="journey" class="section journey-section" data-index="2" aria-label="The journey">
+
+    <div class="depth-field" aria-hidden="true">
+      <div class="parallax" data-speed="0.08"><div class="journey-nebula-wash"></div></div>
+      <div class="parallax" data-speed="0.18"><div class="journey-planet journey-planet--a"></div></div>
+      <div class="parallax" data-speed="0.3"><div class="journey-planet journey-planet--b"></div></div>
+      <div class="parallax" data-speed="0.42"><div class="light-trails"></div></div>
+      <div class="parallax" data-speed="0.55" data-mouse="0.8"><div class="particles-layer" data-particle-count="16" id="journeyParticles"></div></div>
+    </div>
+
+    <div class="section-inner">
+      <p class="section-label reveal" data-reveal="fade-up">02 // The Journey</p>
+      <h2 class="section-heading reveal" data-reveal="fade-up">The Journey</h2>
+      <p class="statement reveal" data-reveal="fade-up">Every discovery begins beyond the familiar.</p>
+    </div>
+  </section>
+
+  <!-- =====================================================
+       SECTION 02 — PLANET EXPLORATION
+  ====================================================== -->
+  <section id="worlds" class="section worlds-section" data-index="3" aria-label="Planet exploration">
+
+    <div class="depth-field" aria-hidden="true">
+      <div class="parallax" data-speed="0.1"><div class="worlds-stars-wash"></div></div>
+
+      <div class="parallax" data-speed="0.2">
+        <div class="planet-hero">
+          <div class="planet-hero-surface"></div>
+          <div class="planet-hero-atmosphere"></div>
+        </div>
+      </div>
+
+      <div class="parallax" data-speed="0.32" data-mouse="0.5">
+        <div class="orbital-wrap orbital-wrap--worlds">
+          <div class="orbital-ring orbital-ring--b"></div>
+        </div>
+      </div>
+
+      <div class="parallax" data-speed="0.48" data-mouse="1">
+        <div class="moon"></div>
+      </div>
+
+      <div class="parallax" data-speed="0.65" data-mouse="1.4">
+        <div class="particles-layer" data-particle-count="14" id="worldsParticles"></div>
+      </div>
+    </div>
+
+    <div class="section-inner section-inner--left">
+      <p class="section-label reveal" data-reveal="fade-up">03 // Planet Exploration</p>
+      <p class="tag-line reveal" data-reveal="fade-up">Planet // 01</p>
+      <h2 class="section-heading reveal" data-reveal="fade-up">Unknown Worlds</h2>
+      <p class="section-desc reveal" data-reveal="fade-up">Beyond every horizon lies a world waiting to be understood.</p>
+    </div>
+  </section>
+
+  <!-- =====================================================
+       SECTION 03 — DEEP SPACE
+  ====================================================== -->
+  <section id="deepspace" class="section deepspace-section" data-index="4" aria-label="Deep space">
+
+    <div class="depth-field" aria-hidden="true">
+      <div class="parallax" data-speed="0.06"><div class="deepspace-void"></div></div>
+      <div class="parallax" data-speed="0.15"><div class="galaxy galaxy--a"></div></div>
+      <div class="parallax" data-speed="0.24"><div class="galaxy galaxy--b"></div></div>
+
+      <div class="parallax" data-speed="0.36">
+        <div class="geo-shape geo-shape--ring"></div>
+      </div>
+      <div class="parallax" data-speed="0.4">
+        <div class="geo-shape geo-shape--triangle"></div>
+      </div>
+
+      <div class="parallax" data-speed="0.28"><div class="light-beams"></div></div>
+
+      <div class="parallax" data-speed="0.58" data-mouse="1.2">
+        <div class="particles-layer" data-particle-count="30" id="deepspaceParticles"></div>
+      </div>
+    </div>
+
+    <div class="section-inner section-inner--center">
+      <p class="section-label reveal" data-reveal="fade-up">04 // Deep Space</p>
+      <h2 class="section-heading section-heading--stacked reveal" data-reveal="fade-up">
+        <span>Deep</span>
+        <span>Space</span>
+      </h2>
+      <p class="section-desc reveal" data-reveal="fade-up">The further we travel,<br>the more we discover.</p>
+    </div>
+  </section>
+
+  <!-- =====================================================
+       SECTION 04 — BEYOND THE VISIBLE
+  ====================================================== -->
+  <section id="beyond" class="section beyond-section" data-index="5" aria-label="Beyond the visible">
+
+    <div class="depth-field" aria-hidden="true">
+      <div class="parallax" data-speed="0.05"><div class="beyond-backdrop"></div></div>
+
+      <div class="parallax" data-speed="0.14">
+        <div class="portal" id="portal">
+          <div class="portal-ring portal-ring--outer"></div>
+          <div class="portal-ring portal-ring--mid"></div>
+          <div class="portal-core"></div>
+        </div>
+      </div>
+
+      <div class="parallax" data-speed="0.5" data-mouse="1.3">
+        <div class="particles-layer" data-particle-count="22" id="beyondParticles"></div>
+      </div>
+    </div>
+
+    <div class="section-inner section-inner--center">
+      <p class="section-label reveal" data-reveal="fade-up">05 // Beyond The Visible</p>
+      <h2 class="section-heading section-heading--stacked reveal" data-reveal="fade-up">
+        <span>Beyond</span>
+        <span>The Visible</span>
+      </h2>
+      <p class="statement reveal" data-reveal="fade-up">Not everything that exists can be seen.</p>
+    </div>
+  </section>
+
+  <!-- =====================================================
+       SECTION 05 — THE FUTURE
+  ====================================================== -->
+  <section id="future" class="section future-section" data-index="6" aria-label="The future">
+
+    <div class="depth-field" aria-hidden="true">
+      <div class="parallax" data-speed="0.07"><div class="future-sky"></div></div>
+      <div class="parallax" data-speed="0.16"><div class="future-horizon-glow"></div></div>
+
+      <div class="parallax" data-speed="0.22">
+        <div class="future-structure future-structure--a"></div>
+      </div>
+      <div class="parallax" data-speed="0.3">
+        <div class="future-structure future-structure--b"></div>
+      </div>
+      <div class="parallax" data-speed="0.2">
+        <div class="future-ring"></div>
+      </div>
+
+      <div class="parallax" data-speed="0.4"><div class="light-pillars"></div></div>
+
+      <div class="parallax" data-speed="0.62" data-mouse="1.5">
+        <div class="particles-layer" data-particle-count="18" id="futureParticles"></div>
+      </div>
+
+      <div class="grid-floor" aria-hidden="true"></div>
+    </div>
+
+    <div class="section-inner">
+      <p class="section-label reveal" data-reveal="fade-up">06 // The Future</p>
+      <h2 class="section-heading reveal" data-reveal="fade-up">The Future</h2>
+      <p class="statement reveal" data-reveal="fade-up">We build what comes next.</p>
+    </div>
+  </section>
+
+  <!-- =====================================================
+       SECTION 06 — FINAL
+  ====================================================== -->
+  <section id="final" class="section final-section" data-index="7" aria-label="The journey never ends">
+
+    <div class="depth-field" aria-hidden="true">
+      <div class="parallax" data-speed="0.03"><div class="final-glow"></div></div>
+      <div class="parallax" data-speed="0.4" data-mouse="0.8">
+        <div class="particles-layer" data-particle-count="20" id="finalParticles"></div>
+      </div>
+    </div>
+
+    <div class="section-inner section-inner--center">
+      <p class="section-label reveal" data-reveal="fade-up">07 // The Journey Never Ends</p>
+      <h2 class="section-heading section-heading--stacked reveal" data-reveal="fade-up">
+        <span>The Journey</span>
+        <span>Never Ends.</span>
+      </h2>
+      <p class="final-triad reveal" data-reveal="fade-up">Explore. Discover. Create.</p>
+
+      <a href="#hero" class="btn-primary btn-primary--final reveal" data-reveal="fade-up" data-cursor="hover">
+        <span>Enter The Next Horizon</span>
+      </a>
+
+      <footer class="site-footer">
+        <span>Nebula &mdash; an interactive parallax journey</span>
+      </footer>
+    </div>
+  </section>
+
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>
